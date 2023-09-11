@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Nave.sln"
+    "dotnet.defaultSolution": "dcc148_spaceshipShooter.sln"
 }
