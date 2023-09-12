@@ -388,7 +388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2082164891}
-  - component: {fileID: 2082164890}
+  - component: {fileID: 2082164892}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Spawner
@@ -396,7 +396,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2082164890
+--- !u!4 &2082164891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082164889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2082164892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,26 +423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4551347e9da71a83b1ad1a4ddea6a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  straightEnemyAmount: 5
+  speed: 2
+  straightEnemyAmount: 20
   straightEnemyPrefab: {fileID: 4734411917701411938, guid: a3f93e491aae862d1b49b879cb3d0059, type: 3}
-  minInterval: 0.2
-  maxInterval: 10000
---- !u!4 &2082164891
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082164889}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  minSpawnInterval: 0.8
+  maxSpawnInterval: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

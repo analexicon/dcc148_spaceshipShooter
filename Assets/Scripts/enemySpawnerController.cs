@@ -7,38 +7,33 @@ public class enemySpawnerController : MonoBehaviour
     public float speed = 2;
     private float direction;
     public ObjectPool straightEnemyPool;
-    public int straightEnemyAmount = 5;
+    public int straightEnemyAmount = 20;
     public GameObject straightEnemyPrefab;
     public ObjectPool sinusoidalEnemyPool;
     public ObjectPool sinusoidalEnemyPrefab;
     public ObjectPool aproachingEnemyPool;
     public ObjectPool aproachingEnemyPrefab;
 
-    public float minInterval = 0.2f;
-    public float maxInterval = 10000f;
-
-    private float nextSpawnTime;
+    public float minSpawnInterval = 0.8f;
+    public float maxSpawnInterval = 4f;
 
     // Start is called before the first frame update
     void Start()
     {
         direction = 1;
         straightEnemyPool = new ObjectPool(straightEnemyPrefab, straightEnemyAmount);
-        nextSpawnTime = Time.time + Random.Range(minInterval, maxInterval);
-        straightEnemySpawn();
 
+        Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector2 pos = transform.position;
-
         pos.y += speed * Time.deltaTime * direction;
 
         if (pos.y > 4.3f)
         {
-
             direction = -1;
         }
         else if (pos.y < -4.3f)
@@ -47,14 +42,9 @@ public class enemySpawnerController : MonoBehaviour
         }
 
         transform.position = pos;
-
-
-
-        // if (Time.time >= nextSpawnTime)
-        // straightEnemySpawn();
     }
 
-    void straightEnemySpawn()
+    void SpawnStraightEnemy()
     {
         GameObject straightEnemy = straightEnemyPool.GetFromPool();
 
@@ -63,8 +53,8 @@ public class enemySpawnerController : MonoBehaviour
             Vector2 pos = transform.position;
             straightEnemy.transform.position = pos;
             straightEnemy.SetActive(true);
-
         }
-    }
 
+        Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+    }
 }
