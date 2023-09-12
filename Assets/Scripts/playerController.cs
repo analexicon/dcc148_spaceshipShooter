@@ -7,7 +7,7 @@ public class playerController : MonoBehaviour
 {
     private float vx;
     private float MAX_Y = 4.3f;
-    private bool readyBlaster;
+    private bool nextBlaster;
     public float ySpeed = 3.5f;
     public int ammo = 10;
     public ObjectPool blasterPool;
@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
         vx = 0;
-        readyBlaster = true;
+        nextBlaster = true;
         blasterPool = new ObjectPool(shotPrefab, ammo);
     }
 
@@ -52,13 +52,13 @@ public class playerController : MonoBehaviour
         {
             Vector2 pos = transform.position;
             Vector2 wingLenght = new Vector2(0, 0.45f);
-            if (readyBlaster)
+            if (nextBlaster)
 
                 pos += wingLenght;
             else
                 pos -= wingLenght;
 
-            readyBlaster = !readyBlaster;
+            nextBlaster = !nextBlaster;
             blaster.transform.position = pos;
             blaster.SetActive(true);
         }

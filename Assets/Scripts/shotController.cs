@@ -19,5 +19,9 @@ public class shotController : MonoBehaviour
         pos.x += speed * Time.deltaTime;
 
         transform.position = pos;
+
+        Vector2 maxPos = new Vector2(8, 0);
+        if (transform.position.x > maxPos.x)
+            gameObject.SetActive(false);
     }
 }
