@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
         Vector2 pos = transform.position;
         float vy = Input.GetAxis("Vertical") * ySpeed;
 
-        Vector2 v = new Vector2(0, vy);
+        Vector2 v = new Vector2(vx, vy);
 
         pos += v * Time.fixedDeltaTime;
 
@@ -42,7 +42,6 @@ public class playerController : MonoBehaviour
             transform.position = pos;
         }
     }
-
 
     void Shoot()
     {
@@ -61,6 +60,14 @@ public class playerController : MonoBehaviour
             nextBlaster = !nextBlaster;
             blaster.transform.position = pos;
             blaster.SetActive(true);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (!collider.gameObject.CompareTag("Friendly"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }
