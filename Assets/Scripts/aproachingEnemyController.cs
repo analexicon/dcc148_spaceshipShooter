@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WavyEnemyController : MonoBehaviour
+public class aproachingEnemyController : MonoBehaviour
 {
     public float speed = 3;
-    public float rotationSpeed = 120.0f;
-    public float amplitude = 3.0f;
-    public float frequency = 5.0f;
+    public float initialX;
+    public float initialY;
+    public float increaseSpeed = 0.1f;
+    public float maxSize = 0.2f;
 
     private Vector2 posUpdater;
-    private float initialX;
-    private float initialY;
 
     // Start is called before the first frame update
     void Start()
@@ -31,15 +30,16 @@ public class WavyEnemyController : MonoBehaviour
     void Update()
     {
         posUpdater.x -= speed * Time.deltaTime;
-        posUpdater.y = initialY + Mathf.Sin(Time.time * frequency) * amplitude;
+        posUpdater.y = initialY;
         transform.position = posUpdater;
-
-        float rotationAmount = rotationSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.forward, rotationAmount);
 
         float minPos = -8;
         if (transform.position.x < minPos)
             gameObject.SetActive(false);
+
+
+        float newSize = Mathf.Min(transform.localScale.x + increaseSpeed * Time.deltaTime, maxSize);
+        transform.localScale = new Vector3(newSize, newSize, 1.0f);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
