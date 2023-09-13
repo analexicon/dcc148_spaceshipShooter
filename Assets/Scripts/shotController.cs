@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class shotController : MonoBehaviour
 {
-    private float speed = 7;
-    private Vector2 direction; // Direção do tiro
+    private float speed = 10;
+    private Vector2 direction;
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
-    // Método para configurar a direção do tiro
+
     public void SetDirection(Vector2 dir)
     {
         direction = dir.normalized;
@@ -24,7 +23,6 @@ public class shotController : MonoBehaviour
     {
         Vector2 pos = transform.position;
 
-        // Mova o tiro na direção definida
         pos += direction * speed * Time.deltaTime;
 
         transform.position = pos;
