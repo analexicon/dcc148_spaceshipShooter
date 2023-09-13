@@ -44,6 +44,7 @@ public class WavyEnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        gameObject.SetActive(false);
+        if (!collider.CompareTag("Enemy"))
+            gameObject.SetActive(false);
     }
 }

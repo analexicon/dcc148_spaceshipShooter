@@ -10,7 +10,8 @@ public class enemySpawnerController : MonoBehaviour
     public int straightEnemyAmount = 20;
     public GameObject straightEnemyPrefab;
     public ObjectPool sinusoidalEnemyPool;
-    public ObjectPool sinusoidalEnemyPrefab;
+    public int sinusoidalEnemyAmount = 3;
+    public GameObject sinusoidalEnemyPrefab;
     public ObjectPool aproachingEnemyPool;
     public ObjectPool aproachingEnemyPrefab;
 
@@ -22,8 +23,10 @@ public class enemySpawnerController : MonoBehaviour
     {
         direction = 1;
         straightEnemyPool = new ObjectPool(straightEnemyPrefab, straightEnemyAmount);
+        sinusoidalEnemyPool = new ObjectPool(sinusoidalEnemyPrefab, sinusoidalEnemyAmount);
 
         Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+        Invoke("SpawnSinusoidalEnemy", Random.Range(4 * minSpawnInterval, 4 * maxSpawnInterval));
     }
 
     // Update is called once per frame
@@ -56,5 +59,19 @@ public class enemySpawnerController : MonoBehaviour
         }
 
         Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+    }
+
+    void SpawnSinusoidalEnemy()
+    {
+        GameObject sinusoidalEnemy = sinusoidalEnemyPool.GetFromPool();
+
+        if (sinusoidalEnemy != null)
+        {
+            Vector2 pos = transform.position;
+            sinusoidalEnemy.transform.position = pos;
+            sinusoidalEnemy.SetActive(true);
+        }
+
+        Invoke("SpawnSinusoidalEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 }
