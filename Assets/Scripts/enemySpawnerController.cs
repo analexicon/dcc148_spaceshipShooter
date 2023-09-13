@@ -13,7 +13,7 @@ public class enemySpawnerController : MonoBehaviour
     public int aproachingEnemyAmount = 10;
     public GameObject aproachingEnemyPrefab;
     public ObjectPool sinusoidalEnemyPool;
-    public int sinusoidalEnemyAmount = 3;
+    public int sinusoidalEnemyAmount = 10;
     public GameObject sinusoidalEnemyPrefab;
 
     public float minSpawnInterval = 0.8f;
@@ -76,6 +76,8 @@ public class enemySpawnerController : MonoBehaviour
         }
 
         Invoke("SpawnAproachingEnemy", Random.Range(2 * minSpawnInterval, 2 * maxSpawnInterval));
+        if (maxSpawnInterval > 0.9f)
+            maxSpawnInterval -= 0.1f;
     }
 
     void SpawnSinusoidalEnemy()

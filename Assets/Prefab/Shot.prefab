@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3135288466424341332}
   - component: {fileID: 6426370924502873329}
-  - component: {fileID: 619967613323613062}
   - component: {fileID: 6132423002220858260}
   - component: {fileID: 2234772975792019691}
   - component: {fileID: -414374509049792349}
+  - component: {fileID: 4457348663560234560}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Friendly
@@ -88,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &619967613323613062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833159129539360460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd050854f921a86e486d94f77c80ecae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
 --- !u!70 &6132423002220858260
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -259,3 +246,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4457348663560234560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833159129539360460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd050854f921a86e486d94f77c80ecae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7

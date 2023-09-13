@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
     private float vx;
     private float MAX_Y = 4.3f;
     private bool nextBlaster;
-    public float ySpeed = 3.5f;
+    public float ySpeed = 5.0f;
     public int ammo = 10;
     public ObjectPool blasterPool;
     public GameObject shotPrefab;

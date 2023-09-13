@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8554d66e11b61f82882ca4fc92b8b49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ySpeed: 3.5
+  ySpeed: 5
   ammo: 10
   shotPrefab: {fileID: 833159129539360460, guid: 5471c01217db910789d0f0ec9616e513, type: 3}
 --- !u!212 &86513672
@@ -428,7 +428,7 @@ MonoBehaviour:
   straightEnemyPrefab: {fileID: 4734411917701411938, guid: a3f93e491aae862d1b49b879cb3d0059, type: 3}
   aproachingEnemyAmount: 10
   aproachingEnemyPrefab: {fileID: 4824888027759787925, guid: 9f8247ced0f64c49d950e8e3bb2bed2e, type: 3}
-  sinusoidalEnemyAmount: 2
+  sinusoidalEnemyAmount: 10
   sinusoidalEnemyPrefab: {fileID: 6710036362303551207, guid: aed1b6737d5fcb5fe8f9b09bc55a945b, type: 3}
   minSpawnInterval: 0.8
   maxSpawnInterval: 3

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class shotController : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 7;
     // Start is called before the first frame update
     void Start()
     {
