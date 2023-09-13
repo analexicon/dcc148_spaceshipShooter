@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     private float MAX_Y = 4.3f;
-    public float rotationSpeed = 120.0f;
+    public float rotationSpeed = 180.0f;
     public float ySpeed = 5.0f;
     public int ammo = 10;
     public ObjectPool blasterPool;
