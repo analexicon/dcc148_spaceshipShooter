@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8554d66e11b61f82882ca4fc92b8b49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 120
   ySpeed: 5
   ammo: 10
   shotPrefab: {fileID: 833159129539360460, guid: 5471c01217db910789d0f0ec9616e513, type: 3}

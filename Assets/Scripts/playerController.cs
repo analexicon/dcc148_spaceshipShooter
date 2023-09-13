@@ -1,29 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class playerController : MonoBehaviour
 {
-    private float vx;
     private float MAX_Y = 4.3f;
-    private bool nextBlaster;
+    public float rotationSpeed = 120.0f;
     public float ySpeed = 5.0f;
     public int ammo = 10;
     public ObjectPool blasterPool;
     public GameObject shotPrefab;
 
+    private Transform playerTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        vx = 0;
-        nextBlaster = true;
+        playerTransform = transform;
         blasterPool = new ObjectPool(shotPrefab, ammo);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        float rotationInput = Input.GetAxis("Horizontal");
+        float rotationAmount = rotationInput * rotationSpeed * Time.deltaTime;
+        playerTransform.Rotate(Vector3.forward, rotationAmount);
+
+
         if (Input.GetKeyDown(KeyCode.Space))
             Shoot();
     }
@@ -33,14 +38,12 @@ public class playerController : MonoBehaviour
         Vector2 pos = transform.position;
         float vy = Input.GetAxis("Vertical") * ySpeed;
 
-        Vector2 v = new Vector2(vx, vy);
+        Vector2 v = new Vector2(0, vy);
 
         pos += v * Time.fixedDeltaTime;
 
         if (pos.y < MAX_Y && pos.y > -MAX_Y)
-        {
             transform.position = pos;
-        }
     }
 
     void Shoot()
@@ -50,14 +53,11 @@ public class playerController : MonoBehaviour
         if (blaster != null)
         {
             Vector2 pos = transform.position;
-            Vector2 wingLenght = new Vector2(0, 0.45f);
-            if (nextBlaster)
 
-                pos += wingLenght;
-            else
-                pos -= wingLenght;
+            Vector2 direction = playerTransform.up;
 
-            nextBlaster = !nextBlaster;
+            blaster.GetComponent<shotController>().SetDirection(direction);
+
             blaster.transform.position = pos;
             blaster.SetActive(true);
         }
@@ -66,8 +66,6 @@ public class playerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (!collider.gameObject.CompareTag("Friendly"))
-        {
             UnityEditor.EditorApplication.isPlaying = false;
-        }
     }
 }
