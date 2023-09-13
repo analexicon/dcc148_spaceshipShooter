@@ -423,15 +423,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4551347e9da71a83b1ad1a4ddea6a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   straightEnemyAmount: 20
   straightEnemyPrefab: {fileID: 4734411917701411938, guid: a3f93e491aae862d1b49b879cb3d0059, type: 3}
+  aproachingEnemyAmount: 10
+  aproachingEnemyPrefab: {fileID: 4824888027759787925, guid: 9f8247ced0f64c49d950e8e3bb2bed2e, type: 3}
   sinusoidalEnemyAmount: 2
   sinusoidalEnemyPrefab: {fileID: 6710036362303551207, guid: aed1b6737d5fcb5fe8f9b09bc55a945b, type: 3}
-  aproachingEnemyAmount: 10
-  aproachingEnemyPrefab: {fileID: 0}
   minSpawnInterval: 0.8
-  maxSpawnInterval: 4
+  maxSpawnInterval: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class enemySpawnerController : MonoBehaviour
 {
-    public float speed = 2;
+    public float speed = 3;
     private float direction;
     public ObjectPool straightEnemyPool;
     public int straightEnemyAmount = 20;
     public GameObject straightEnemyPrefab;
+    public ObjectPool aproachingEnemyPool;
+    public int aproachingEnemyAmount = 10;
+    public GameObject aproachingEnemyPrefab;
     public ObjectPool sinusoidalEnemyPool;
     public int sinusoidalEnemyAmount = 3;
     public GameObject sinusoidalEnemyPrefab;
-    public ObjectPool aproachingEnemyPool;
-    public ObjectPool aproachingEnemyPrefab;
 
     public float minSpawnInterval = 0.8f;
-    public float maxSpawnInterval = 4f;
+    public float maxSpawnInterval = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
         direction = 1;
         straightEnemyPool = new ObjectPool(straightEnemyPrefab, straightEnemyAmount);
+        aproachingEnemyPool = new ObjectPool(aproachingEnemyPrefab, aproachingEnemyAmount); // Crie uma piscina para aproachingEnemy
         sinusoidalEnemyPool = new ObjectPool(sinusoidalEnemyPrefab, sinusoidalEnemyAmount);
 
         Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+        Invoke("SpawnAproachingEnemy", Random.Range(2 * minSpawnInterval, 2 * maxSpawnInterval));
         Invoke("SpawnSinusoidalEnemy", Random.Range(4 * minSpawnInterval, 4 * maxSpawnInterval));
     }
 
@@ -61,6 +64,20 @@ public class enemySpawnerController : MonoBehaviour
         Invoke("SpawnStraightEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
     }
 
+    void SpawnAproachingEnemy()
+    {
+        GameObject aproachingEnemy = aproachingEnemyPool.GetFromPool();
+
+        if (aproachingEnemy != null)
+        {
+            Vector2 pos = transform.position;
+            aproachingEnemy.transform.position = pos;
+            aproachingEnemy.SetActive(true);
+        }
+
+        Invoke("SpawnAproachingEnemy", Random.Range(2 * minSpawnInterval, 2 * maxSpawnInterval));
+    }
+
     void SpawnSinusoidalEnemy()
     {
         GameObject sinusoidalEnemy = sinusoidalEnemyPool.GetFromPool();
@@ -72,6 +89,6 @@ public class enemySpawnerController : MonoBehaviour
             sinusoidalEnemy.SetActive(true);
         }
 
-        Invoke("SpawnSinusoidalEnemy", Random.Range(minSpawnInterval, maxSpawnInterval));
+        Invoke("SpawnSinusoidalEnemy", Random.Range(3 * minSpawnInterval, 3 * maxSpawnInterval));
     }
 }
